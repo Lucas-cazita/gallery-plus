@@ -25,4 +25,4 @@ const Skeleton = ({ rounded, className }: SkeletonProps) => {
     )
 }
 
-export default Skeleton
+export default Skeleton;
