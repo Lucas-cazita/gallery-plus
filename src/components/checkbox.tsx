@@ -4,9 +4,9 @@ import Icon from './icon';
 import CheckIcon from '../assets/icons/check.svg?react'
 import Skeleton from './skeleton';
 
-export const checkboxContainerVariants = cva("inline-flex justify-center items-center relative group");
+export const checkboxWrapperVariants = cva("inline-flex justify-center items-center relative group");
 
-export const checkboxVariants = cva("appearance-none peer flex justify-center items-center cursor-pointer overflow-hidden", {
+export const checkboxVariants = cva("appearance-none peer flex justify-center items-center cursor-pointer overflow-hidden transition", {
     variants: {
         variant: {
             none: "",
@@ -17,10 +17,11 @@ export const checkboxVariants = cva("appearance-none peer flex justify-center it
                     `
         },
         size: {
-            md: "h-3 w-3 p-1 rounded"
+            sm: "h-3 w-3 p-1 rounded",
+            md: "w-5 h-5 rounded"
         },
         disabled: {
-            true: "pointer-events-none opacity-50"
+            true: "pointer-events-none"
         }
     },
     defaultVariants: {
@@ -34,19 +35,19 @@ export const checkboxIconVariants = cva(`absolute top-1/2 -translate-y-1/2 hidde
             peer-checked:block fill-text-label cursor-pointer`, {
     variants: {
         size: {
-            md: "w-3 h-3"
+            sm: "w-3 h-3",
+            md: "w-5 h-5"
         }
     },
     defaultVariants: {
         size: "md"
     }
-
-})
+});
 
 interface CheckboxProps extends
     Omit<React.ComponentProps<"input">, "size" | "disabled">,
     VariantProps<typeof checkboxVariants> {
-    loading?: boolean
+    loading?: boolean // O Professor não fez essa verificação nem o Skeleton
 }
 
 const Checkbox = ({
@@ -67,7 +68,7 @@ const Checkbox = ({
 
     return (
         <label
-            className={checkboxContainerVariants({ className })}
+            className={checkboxWrapperVariants({ className })}
         >
             <input
                 type="checkbox"

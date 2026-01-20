@@ -8,6 +8,9 @@ import Badge from './components/badge'
 import Divider from './components/divider'
 import Card from './components/card'
 import Container from './components/container'
+import InputText from './components/input-text'
+import SerachIcon from './assets/icons/search.svg?react'
+import InputSingleFile from './components/input-single-file'
 
 function App() {
 
@@ -36,6 +39,11 @@ function App() {
         <Button >Clique aqui</Button>
 
       </Container>
+
+      <div>
+        <InputText placeholder='Busque uma foto' icon={SerachIcon} error="Erro no arquivo" />
+        <InputSingleFile />
+      </div>
     </main>
   )
 }
