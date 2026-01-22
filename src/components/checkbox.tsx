@@ -67,7 +67,7 @@ const Checkbox = ({
     }
 
     return (
-        <label
+        <span
             className={checkboxWrapperVariants({ className })}
         >
             <input
@@ -79,7 +79,7 @@ const Checkbox = ({
                 icon={CheckIcon}
                 className={checkboxIconVariants({ size })}
             />
-        </label>
+        </span>
     )
 }
 

@@ -18,8 +18,8 @@ export const buttonVariants = cva("flex justify-center items-center cursor-point
 				`
         },
         size: {
-            sm: "h-7 min-w-20 py-1 px-3 rounded-md",
-            md: "h-10 min-w-20 px-3 py-2 rounded-md"
+            sm: "h-7 py-1 px-3 rounded-md",
+            md: "h-10 px-3 py-2 rounded-md"
         },
         disabled: {
             true: "pointer-events-none opacity-50"
@@ -118,7 +118,6 @@ const Button = ({
 
                 <Icon
                     icon={handling ? SpinnerIcon : icon}
-                    animate
                     className={buttonIconVariants({ variant, size })}
                 />
 

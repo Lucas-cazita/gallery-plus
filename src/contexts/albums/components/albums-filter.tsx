@@ -1,0 +1,68 @@
+import React from 'react'
+import type { Album } from '../models/album'
+import Text from '../../../components/text';
+import Button, { buttonVariants } from '../../../components/button';
+import cx from 'classnames'
+import Skeleton from '../../../components/skeleton';
+import usePhotos from '../../photos/hooks/use-photos';
+
+interface AlbumsFilterProps extends React.ComponentProps<"div"> {
+    albums: Album[];
+    loading?: boolean;
+}
+
+const AlbumsFilter = ({
+    albums,
+    loading,
+    className,
+    ...props
+}: AlbumsFilterProps) => {
+
+    const { filters } = usePhotos();
+
+    return (
+        <div
+            className={cx('flex items-center gap-3.5 overflow-x-auto', className)}
+            {...props}
+        >
+            <Text variant={'heading/small'}>Álbuns</Text>
+
+            <div className='flex gap-3'>
+                {!loading ? (
+                    <>
+                        <Button
+                            size={'sm'}
+                            className='cursor-pointer'
+                            variant={filters.albumId === null ? 'primary' : 'ghost'}
+                            onClick={() => filters.setAlbumId(null)}
+                        >
+                            Todos
+                        </Button>
+                        {albums.map(album => (
+                            <Button
+                                size={'sm'}
+                                className='cursor-pointer'
+                                variant={filters.albumId === album.id ? 'primary' : 'ghost'}
+                                onClick={() => filters.setAlbumId(album.id)}
+                            >
+                                {album.title}
+                            </Button>
+                        ))}
+                    </>
+                ) : (
+                    Array.from({ length: 6 }).map((_, index) => (
+                        <Skeleton
+                            key={`badge-loading-${index}`}
+                            className={buttonVariants({
+                                size: 'sm',
+                                className: 'w-20'
+                            })}
+                        />
+                    ))
+                )}
+            </div>
+        </div>
+    )
+}
+
+export default AlbumsFilter;

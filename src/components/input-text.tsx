@@ -70,7 +70,7 @@ const InputText = ({
                 />
             </div>
             {error &&
-                <Text variant={'label/small'} className='text-accent-red'>
+                <Text variant={'label/small'} className='text-accent-red!'>
                     {error}
                 </Text>
             }

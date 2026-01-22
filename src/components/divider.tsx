@@ -7,8 +7,8 @@ export const dividerVariants = cva("", {
             default: "bg-border-primary"
         },
         orientation: {
-            horizontal: "w-full h-px",
-            vetical: "w-px h-full"
+            horizontal: "h-px",
+            vertical: "w-px"
         }
     },
     defaultVariants: {

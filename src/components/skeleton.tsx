@@ -7,6 +7,7 @@ export const skeletonVariants = cva("bg-background-tertiary animate-pulse pointe
             xs: "rounded-xs",
             sm: "rounded-sm",
             md: "rounded-md",
+            lg: "rounded-lg",
             full: "rounded-full"
         }
     },

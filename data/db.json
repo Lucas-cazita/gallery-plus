@@ -1,11 +1,70 @@
 {
   "photos": [
     {
-      "id": "eb5b11e5-5637-4e31-85b1-bcb66f0ae681",
-      "title": "ABC",
-      "albumsIds": []
+      "id": "6d4e78c8-5610-4425-a4e2-4e543201f72f",
+      "title": "foto um",
+      "albumsIds": [],
+      "imageId": "96fa808b-c058-4406-be05-7ffb0e146024.png"
+    },
+    {
+      "id": "8500d49a-438a-4f4c-9b28-c1820ae85ab2",
+      "title": "foto dois",
+      "albumsIds": [],
+      "imageId": "2443c77b-81a3-4dae-b8c4-703c66ad4cac.png"
+    },
+    {
+      "id": "0f888bc3-048b-4f1c-a720-97a9f5bb3973",
+      "title": "Gato",
+      "albumsIds": [],
+      "imageId": "6667e4f4-07ba-4f01-8a22-09f58f32c7f9.png"
+    },
+    {
+      "id": "e4167412-d97b-4b49-aa7d-bd6e56461811",
+      "title": "Árvore",
+      "albumsIds": [],
+      "imageId": "8d0ae244-3d88-41c9-b0c8-2c7c374b7cb0.png"
+    },
+    {
+      "id": "5363860f-cdcf-4d59-8763-6ef6503671fd",
+      "title": "Cafetaria",
+      "albumsIds": [],
+      "imageId": "6fb06367-920b-4159-a251-8d0705690d3f.png"
     }
   ],
-  "albums": [],
-  "photosOnAlbums": []
+  "albums": [
+    {
+      "id": "5af7783f-244b-4214-8074-af81a7af55d4",
+      "title": "Campo"
+    },
+    {
+      "id": "3e7ffa52-43e2-4457-9c7f-7831fb1d88c7",
+      "title": "Viagens"
+    },
+    {
+      "id": "46f08cb8-14b1-493a-b86c-c12dd8e2bfab",
+      "title": "Diversos"
+    }
+  ],
+  "photosOnAlbums": [
+    {
+      "photoId": "6d4e78c8-5610-4425-a4e2-4e543201f72f",
+      "albumId": "5af7783f-244b-4214-8074-af81a7af55d4"
+    },
+    {
+      "photoId": "8500d49a-438a-4f4c-9b28-c1820ae85ab2",
+      "albumId": "3e7ffa52-43e2-4457-9c7f-7831fb1d88c7"
+    },
+    {
+      "photoId": "0f888bc3-048b-4f1c-a720-97a9f5bb3973",
+      "albumId": "46f08cb8-14b1-493a-b86c-c12dd8e2bfab"
+    },
+    {
+      "photoId": "e4167412-d97b-4b49-aa7d-bd6e56461811",
+      "albumId": "46f08cb8-14b1-493a-b86c-c12dd8e2bfab"
+    },
+    {
+      "photoId": "5363860f-cdcf-4d59-8763-6ef6503671fd",
+      "albumId": "3e7ffa52-43e2-4457-9c7f-7831fb1d88c7"
+    }
+  ]
 }
