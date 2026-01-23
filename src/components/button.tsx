@@ -5,7 +5,7 @@ import Skeleton from './skeleton';
 import Icon from './icon';
 import SpinnerIcon from '../assets/icons/spinner.svg?react'
 
-export const buttonVariants = cva("flex justify-center items-center cursor-pointer gap-1", {
+export const buttonVariants = cva("flex justify-center items-center cursor-pointer gap-1 border border-solid", {
     variants: {
         variant: {
             none: "",
@@ -13,7 +13,7 @@ export const buttonVariants = cva("flex justify-center items-center cursor-point
             secondary: "bg-background-secondary hover:bg-background-tertiary",
             destructive: "bg-background-secondary hover:bg-background-tertiary",
             ghost: `
-					bg-transparent border border-solid border-border-primary 
+					bg-transparent border-border-primary 
 				 hover:border-background-secondary
 				`
         },

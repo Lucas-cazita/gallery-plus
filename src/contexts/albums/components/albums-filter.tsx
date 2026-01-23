@@ -40,6 +40,7 @@ const AlbumsFilter = ({
                         </Button>
                         {albums.map(album => (
                             <Button
+                                key={`${album.id}-button`}
                                 size={'sm'}
                                 className='cursor-pointer'
                                 variant={filters.albumId === album.id ? 'primary' : 'ghost'}
