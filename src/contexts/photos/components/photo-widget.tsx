@@ -41,7 +41,7 @@ const PhotoWidget = ({
                     />
                 )}
 
-                <div className='flex gap-1 min-h-4.5'>
+                <div className='flex gap-1 min-h-5.5'>
                     {!loading ? (
                         <>
                             {photo.albums.slice(0, 2).map(album => (
@@ -75,7 +75,7 @@ const PhotoWidget = ({
                     to={`/photos/${photo.id}`}
                     className={buttonVariants({
                         variant: 'secondary',
-                        className: 'px-2! py-2!'
+                        className: 'px-2! py-2! mt-auto'
                     })}
                 >
                     <Text

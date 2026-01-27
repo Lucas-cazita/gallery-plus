@@ -3,6 +3,7 @@ import { api, fetcher } from "../../../helpers/api";
 import type { Photo } from "../models/photo";
 import type { PhotoNewFormSchema } from "../schemas";
 import {toast} from 'sonner';
+import { useNavigate } from "react-router";
 
 interface PhotoDetailResponse extends Photo {
     nextPhotoId?: string;
@@ -11,6 +12,7 @@ interface PhotoDetailResponse extends Photo {
 
 const usePhoto = (id?: string) => {
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     const {data, isLoading} = useQuery<PhotoDetailResponse>({
         queryKey: ['photo', id],
@@ -19,6 +21,7 @@ const usePhoto = (id?: string) => {
     });
 
     async function createPhoto(payload: PhotoNewFormSchema) {
+
         try {
             const {data: photo} = await api.post<Photo>('/photos', {
                 title: payload.title
@@ -38,21 +41,45 @@ const usePhoto = (id?: string) => {
                 })
             }
 
-            queryClient.invalidateQueries({queryKey: ['photos']})
 
-            toast.success('Foto criada com sucesso!')
+            queryClient.invalidateQueries({queryKey: ['photos']});
+
+            
+            toast.success(`Foto "${photo.title}" criada com sucesso!`, {
+                duration: 4000,
+            });
+
         } catch (error) {
+
             toast.error(`Erro ao criar foto ${error}`)
             throw error;
         }
     }
+
+    async function deletePhoto(photoId: string) {
+        try {
+            await api.delete(`/photos/${photoId}`);
+
+            queryClient.invalidateQueries({queryKey: ['photos']});
+
+            toast.success(`Foto deletada com sucesso!`, {
+            duration: 4000,
+            });
+
+            navigate('/');
+            
+        } catch (error) {
+        toast.error(`Erro ao deletar foto ${error}`)
+        throw error;
+    }}
 
     return {
         photo: data,
         isLoadingPhoto: isLoading,
         nextPhotoId: data?.nextPhotoId,
         previousPhotoId: data?.previousPhotoId,
-        createPhoto
+        createPhoto,
+        deletePhoto
     }
 }
 

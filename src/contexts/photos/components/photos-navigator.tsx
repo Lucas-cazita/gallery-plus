@@ -6,6 +6,7 @@ import ArrowRightIcon from '../../../assets/icons/chevron-right.svg?react';
 import Button from '../../../components/button';
 import { useNavigate } from 'react-router';
 import cx from 'classnames';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface PhotosNavigatorProps extends React.ComponentProps<"div"> {
     previousPhotoId?: string;
@@ -22,6 +23,7 @@ const PhotosNavigator = ({
 }: PhotosNavigatorProps) => {
 
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
 
     return (
         <div className={cx('flex gap-2', className)} {...props}>
@@ -33,6 +35,9 @@ const PhotosNavigator = ({
                         disabled={!previousPhotoId}
                         onClick={() => {
                             navigate(`/photos/${previousPhotoId}`)
+                            queryClient.invalidateQueries({
+                                queryKey: ['photos']
+                            })
                         }}
                     />
                     <Button
@@ -41,6 +46,9 @@ const PhotosNavigator = ({
                         disabled={!nextPhotoId}
                         onClick={() => {
                             navigate(`/photos/${nextPhotoId}`)
+                            queryClient.invalidateQueries({
+                                queryKey: ['photos']
+                            })
                         }}
                     >
                         Próxima Imagem

@@ -4,7 +4,16 @@ import Icon from './icon';
 import CheckIcon from '../assets/icons/check.svg?react'
 import Skeleton from './skeleton';
 
-export const checkboxWrapperVariants = cva("inline-flex justify-center items-center relative group");
+export const checkboxWrapperVariants = cva("inline-flex justify-center items-center relative group", {
+    variants: {
+        disabled: {
+            true: "pointer-events-none opacity-80"
+        }
+    },
+    defaultVariants: {
+        disabled: false
+    }
+});
 
 export const checkboxVariants = cva("appearance-none peer flex justify-center items-center cursor-pointer overflow-hidden transition", {
     variants: {
@@ -19,15 +28,11 @@ export const checkboxVariants = cva("appearance-none peer flex justify-center it
         size: {
             sm: "h-3 w-3 p-1 rounded",
             md: "w-5 h-5 rounded"
-        },
-        disabled: {
-            true: "pointer-events-none"
         }
     },
     defaultVariants: {
         variant: "default",
         size: "md",
-        disabled: false
     }
 })
 
@@ -45,7 +50,7 @@ export const checkboxIconVariants = cva(`absolute top-1/2 -translate-y-1/2 hidde
 });
 
 interface CheckboxProps extends
-    Omit<React.ComponentProps<"input">, "size" | "disabled">,
+    Omit<React.ComponentProps<"input">, "size">,
     VariantProps<typeof checkboxVariants> {
     loading?: boolean // O Professor não fez essa verificação nem o Skeleton
 }
@@ -67,19 +72,19 @@ const Checkbox = ({
     }
 
     return (
-        <span
-            className={checkboxWrapperVariants({ className })}
+        <label
+            className={checkboxWrapperVariants({ disabled, className })}
         >
             <input
                 type="checkbox"
-                className={checkboxVariants({ variant, size, disabled })}
+                className={checkboxVariants({ variant, size })}
                 {...props}
             />
             <Icon
                 icon={CheckIcon}
                 className={checkboxIconVariants({ size })}
             />
-        </span>
+        </label>
     )
 }
 

@@ -13,6 +13,7 @@ import { photoNewFormSchema, type PhotoNewFormSchema } from '../schemas';
 import { zodResolver } from '@hookform/resolvers/zod'
 import usePhoto from '../hooks/use-photo';
 
+
 interface PhotoNewDialogProps {
     trigger: React.ReactNode;
 }
@@ -33,6 +34,7 @@ const PhotoNewDialog = ({ trigger }: PhotoNewDialogProps) => {
     const { albums, isLoadingAlbums } = useAlbums();
 
     useEffect(() => {
+
         if (!modalOpen) {
             form.reset()
         }
@@ -52,9 +54,12 @@ const PhotoNewDialog = ({ trigger }: PhotoNewDialogProps) => {
     }
 
     function handleSubmit(payload: PhotoNewFormSchema) {
+
         setIsCreatingPhoto(async () => {
             await createPhoto(payload);
+
             setModalOpen(false);
+
         });
     }
 
@@ -64,7 +69,11 @@ const PhotoNewDialog = ({ trigger }: PhotoNewDialogProps) => {
                 {trigger}
             </DialogTrigger>
             <DialogContent>
-                <form onSubmit={form.handleSubmit(handleSubmit)}>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    form.handleSubmit(handleSubmit)(e);
+                }}>
                     <DialogHeader>
                         Adicionar foto
                     </DialogHeader>

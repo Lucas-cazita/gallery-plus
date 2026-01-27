@@ -4,7 +4,7 @@ import React, { createElement } from 'react'
 export const containerVariants = cva("mx-auto", {
     variants: {
         size: {
-            md: "max-w-249.75"
+            md: "max-w-250"
         }
     },
     defaultVariants: {
@@ -21,13 +21,14 @@ interface ContainerProps extends
 const Container = ({
     as = 'div',
     className,
+    size,
     children,
     ...props
 }: ContainerProps) => {
     return (createElement(
         as,
         {
-            className: containerVariants({ className }),
+            className: containerVariants({ size, className }),
             ...props
         },
         children
